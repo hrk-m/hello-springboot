@@ -1,6 +1,7 @@
 package com.example.demo.app.inquiry;
 
 import com.example.demo.entity.Inquiry;
+import com.example.demo.service.InquiryNotFoundException;
 import com.example.demo.service.InquiryService;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,22 @@ public class InquiryController {
   @GetMapping
   public String index(Model model) {
     List<Inquiry> list = inquiryService.getAll();
+
+    // InquiryNotFoundException の検証の時に以下コメントアウトを外す
+    // Inquiry inquiry = new Inquiry();
+    // inquiry.setId(4);
+    // inquiry.setName("Jamie");
+    // inquiry.setEmail("sample4@example.com");
+    // inquiry.setContents("Hello");
+    // inquiryService.update(inquiry);
+
+    // 本メソッド内のみでエラーハンドリング設定
+    // try {
+    // inquiryService.update(inquiry);
+    // } catch (InquiryNotFoundException e) {
+    // model.addAttribute("message", e);
+    // return "error/CustomPage";
+    // }
 
     model.addAttribute("inquiryList", list);
     model.addAttribute("title", "Inquiry Index");
@@ -85,5 +103,12 @@ public class InquiryController {
     redirectAttributes.addFlashAttribute("complete", "Registerd");
     return "redirect:/inquiry/form";
   }
+
+  // InquiryController全体のみにエラーハンドリングを設定
+  // @ExceptionHandler(InquiryNotFoundException.class)
+  // public String handleException(InquiryNotFoundException e, Model model) {
+  // model.addAttribute("message", e);
+  // return "error/CustomPage";
+  // }
 
 }
