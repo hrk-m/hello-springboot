@@ -12,3 +12,10 @@
     - (4)までの実行では`Whitelabel Error Page`と表示される
 
 <img src="./images/img02.png" />
+
+### errors
+- `The import java.util cannot be resolvedJava`が出た時
+  - https://scrapbox.io/cybernote/VSCODE%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8
+
+- 
+
