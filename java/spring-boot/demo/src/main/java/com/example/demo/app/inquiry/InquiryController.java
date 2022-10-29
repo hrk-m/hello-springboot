@@ -53,7 +53,7 @@ public class InquiryController {
     model.addAttribute("inquiryList", list);
     model.addAttribute("title", "Inquiry Index");
 
-    return "inquiry/index";
+    return "inquiry/index_boot";
 
   }
 
@@ -62,7 +62,7 @@ public class InquiryController {
       Model model,
       @ModelAttribute("complete") String complete) {
     model.addAttribute("title", "Inquiry Form");
-    return "inquiry/form";
+    return "inquiry/form-boot";
   }
 
   @PostMapping("/form")
@@ -75,11 +75,11 @@ public class InquiryController {
   public String confirm(@Validated InquiryForm inquiryForm, BindingResult result, Model model) {
     if (result.hasErrors()) {
       model.addAttribute("title", "Inquiry Form");
-      return "inquiry/form";
+      return "inquiry/form-boot";
     }
 
     model.addAttribute("title", "Confirm Page");
-    return "inquiry/confirm";
+    return "inquiry/confirm-boot";
   }
 
   @PostMapping("/complete")
@@ -89,7 +89,7 @@ public class InquiryController {
       RedirectAttributes redirectAttributes) {
     if (result.hasErrors()) {
       model.addAttribute("title", "Inquiry Form");
-      return "inquiry/form";
+      return "inquiry/form-boot";
     }
 
     Inquiry inquiry = new Inquiry();
