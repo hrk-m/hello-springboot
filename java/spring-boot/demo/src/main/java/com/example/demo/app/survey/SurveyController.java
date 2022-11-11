@@ -73,7 +73,6 @@ public class SurveyController {
       model.addAttribute("title", "Survey Form");
       return "survey/form";
     }
-    System.out.println(surveyForm.getAge());
 
     Survey survey = new Survey();
     survey.setAge(surveyForm.getAge());
