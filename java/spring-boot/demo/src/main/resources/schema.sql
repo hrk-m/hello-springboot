@@ -1,0 +1,44 @@
+CREATE TABLE inquiry
+(
+   id INT NOT NULL AUTO_INCREMENT,
+   name VARCHAR(100) NOT NULL,
+   email VARCHAR(100) NOT NULL,
+   contents VARCHAR(500) NOT NULL,
+   created DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+
+CREATE TABLE survey
+(
+   id INT NOT NULL AUTO_INCREMENT,
+   age INT NOT NULL,
+   satisfaction INT NOT NULL,
+   comment VARCHAR(100),
+   created DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+
+CREATE TABLE task_type (
+  id INT NOT NULL AUTO_INCREMENT,
+  type VARCHAR(20) NOT NULL,
+  comment VARCHAR(50) DEFAULT NULL
+);
+
+CREATE TABLE task (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  type_id INT NOT NULL,
+  title VARCHAR(50) NOT NULL,
+  detail TEXT,
+  deadline DATETIME NOT NULL
+);
+
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(70) NOT NULL,
+  password VARCHAR(60) NOT NULL,
+  enabled INT NOT NULL,
+  authority VARCHAR(50) NOT NULL,
+  tempkey VARCHAR(255) DEFAULT NULL
+);
